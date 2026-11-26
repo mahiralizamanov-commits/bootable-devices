@@ -366,3 +366,25 @@
     </div>
   </div>
 </section>
+<div class="top-controls" style="margin: 18px auto 28px; max-width: 720px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+  <input
+    type="text"
+    id="isoSearch"
+    placeholder="Dağıtım, Windows veya sürücü ara..."
+    oninput="filterCards()"
+    style="padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.06); color: inherit; min-width: 240px;"
+  />
+  <a href="#linux-section" class="btn">Linux</a>
+  <a href="#windows-section" class="btn">Windows</a>
+  <a href="#drivers-section" class="btn">Drivers</a>
+</div>
+
+<script>
+function filterCards() {
+  const q = document.getElementById("isoSearch").value.toLowerCase().trim();
+  document.querySelectorAll(".card").forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(q) ? "" : "none";
+  });
+}
+</script>
