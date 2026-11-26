@@ -474,3 +474,27 @@ html {
     <p style="margin-top: 8px; opacity: 0.85;">Modern bilgisayarlarda genellikle UEFI + GPT önerilir; çok eski sistemlerde Legacy/CSM gerekebilir.</p>
   </details>
 </section>
+<a href="#linux-section" onclick="scrollToSection(event, 'linux-section', 'Linux')" class="btn">Linux</a>
+<a href="#windows-section" onclick="scrollToSection(event, 'windows-section', 'Windows')" class="btn">Windows</a>
+<a href="#drivers-section" onclick="scrollToSection(event, 'drivers-section', 'Drivers')" class="btn">Drivers</a>
+
+<script>
+function scrollToSection(e, id, keyword) {
+  const byId = document.getElementById(id);
+  if (byId) {
+    e.preventDefault();
+    byId.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  const headings = Array.from(document.querySelectorAll('h1, h2, h3, section, div'));
+  const target = headings.find(el =>
+    el.children.length === 0 && el.textContent.toLowerCase().includes(keyword.toLowerCase())
+  ) || headings.find(el =>
+    el.tagName !== 'BODY' && el.textContent.toLowerCase().includes(keyword.toLowerCase())
+  );
+  if (target) {
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+</script>
